@@ -2,7 +2,7 @@ import './App.css';
 import React from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
-import Sidebar from "./components/Sidebar";
+import Sidebar from "./element/Sidebar";
 import MyCalendar from "./pages/MyCalender";
 import Chat from "./pages/Chat"
 
@@ -19,12 +19,14 @@ export default function App() {
         <Sidebar></Sidebar>
         <Routes>
           <Route path="/" exact element={<MyCalendar events={events}/>} />
-          <Route path="chat/*" component={<Chat />} />
+          <Route path="chat/" component={<Chat />} />
         </Routes>
       </BrowserRouter>
 
   );
 }
+
+
 
 // export default App;
 //
