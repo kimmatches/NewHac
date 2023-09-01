@@ -3,7 +3,7 @@ import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
-import './MyCalender.css'
+import '../MyCalender.css'
 import * as events from "events";
 class MyCalendar extends Component {
 
@@ -23,7 +23,7 @@ class MyCalendar extends Component {
 }
     render() {
         return (
-          <div className="App">
+          <div className="MyCalender">
               {/*<div style={{ margin:10, display:'grid',gridTemplateColumns:"2fr 1fr"}}>*/}
             <FullCalendar
                  plugins={[dayGridPlugin,timeGridPlugin,interactionPlugin]}

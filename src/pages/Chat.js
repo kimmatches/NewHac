@@ -1,6 +1,6 @@
 import { useState } from "react";
 import React from "react";
-import "./styles.css";
+import "../styles.css";
 
 
 function addMessage(message, sender) {
@@ -44,18 +44,8 @@ export default function App() {
 
   return (
     <>
-    <body>
-      <title>ChatGPT 웹사이트 예제</title>
-      <nav className="sidebar">
-        <ul className="navbar">
-          <li>
-            <a>Chat</a>
-          </li>
-          <li>
-            <a>Calendar</a>
-          </li>
-        </ul>
-      </nav>
+
+
       <div className="chat-container" id="">
         <div className="chat">
           <div className="chat-messages" id="chat-messages">
@@ -75,7 +65,6 @@ export default function App() {
           </button>
         </div>
       </div>
-      </body>
     </>
   );
 }
