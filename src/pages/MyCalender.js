@@ -24,18 +24,21 @@ class MyCalendar extends Component {
     render() {
         return (
           <div className="MyCalender">
-              {/*<div style={{ margin:10, display:'grid',gridTemplateColumns:"2fr 1fr"}}>*/}
+              <div style={{
+                  margin: 50,
+                  marginLeft:300,
+                    }}>
             <FullCalendar
                  plugins={[dayGridPlugin,timeGridPlugin,interactionPlugin]}
                     initialView={'dayGridMonth'}
                     headerToolbar={
                         {
-                            start: 'today',
+                            start: 'prev,today',
                             center: 'title',
-                            end: 'prev,next'
+                            end: 'next'
                         }
                     }
-                    height={"80vh"}
+                    height={"70vh"}
                 dateClick = {this.dateClick}
                  events={this.props.events}
                 // events={[
@@ -43,7 +46,7 @@ class MyCalendar extends Component {
                 //     { title: 'event 2', date: '2023-09-02' }
                 // ]}
             />
-              {/*</div>*/}
+              </div>
           </div>
         );
     }

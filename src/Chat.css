@@ -14,7 +14,7 @@
 
 .chat {
   background-color: #2B3648;
-  width: 1000px;
+  /*width: 1000px;*/
 }
 
 .chat-messages {
@@ -25,9 +25,9 @@
 .chat-message {
   color : white;
   background-color: #212936;
-  padding: 0.5rem;
-  border-radius: 4px;
-  margin: 0.5rem 0;
+  /*padding: 0.5rem;*/
+  /*border-radius: 4px;*/
+  /*margin: 0.5rem 0;*/
 }
 .chat-message.bot {
   background-color: #212936;

@@ -3,6 +3,7 @@ import React from "react";
 import {BrowserRouter, Routes, Route, Link} from "react-router-dom";
 
 import Sidebar from "./element/Sidebar";
+import SidebarItem from "./element/SidebarItem";
 import MyCalendar from "./pages/MyCalender";
 import Chat from "./pages/Chat"
 
@@ -18,13 +19,22 @@ export default function App() {
         <div className="App">
             <BrowserRouter>
                 <Sidebar>
+                    {/* <SidebarItem>*/}
+                    {/*    <Link to="/">Calendar</Link>*/}
+                    {/*</SidebarItem>*/}
+                    {/*<SidebarItem>*/}
+                    {/*    <Link to="/chat">Chat</Link>*/}
+                    {/*</SidebarItem>*/}
                 </Sidebar>
                 <Routes>
-                    <Route path="/" exact element={<MyCalendar events={events}/>}/>
-                    <Route path="/chat" element={<Chat/>}/>
-                </Routes>
+                    <Route path="/" exact element={<div className="CalendarContainer"><MyCalendar events={events} /></div>} />
+                    <Route path="/chat" element={<div className="ChatContainer"><Chat /></div>} />
+                    </Routes>
             </BrowserRouter>
+
+
         </div>
+
 
 
     );

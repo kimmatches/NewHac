@@ -1,14 +1,25 @@
-.App {
-  display : flex;
-  color : yellow;
+.Container {
+    display: flex;
+    justify-content: space-between; /* 사이드바와 컨텐츠 영역을 좌우로 배치합니다. */
+    align-items: flex-start; /* 컨텐츠 영역을 위로 정렬합니다. */
+    background-color: #56657F;
 }
-/* 메인 컨텐츠 스타일 */
 
 
+.App {
+    background-color: #56657F;
+}
 
+.CalendarContainer {
+    background-color: #56657F; /* 캘린더 영역의 배경색 */
+    padding: 100px; /* 원하는 패딩값 */
+    /* 다른 스타일 속성을 추가하세요 */
+}
 
-
-
-
+.ChatContainer {
+    background-color: #56657F; /* 채팅 영역의 배경색 */
+    /*padding: 100px; !* 원하는 패딩값 *!*/
+    /* 다른 스타일 속성을 추가하세요 */
+}
 
 
