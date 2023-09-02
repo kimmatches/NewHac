@@ -35,7 +35,7 @@ class MyCalendar extends Component {
                             end: 'prev,next'
                         }
                     }
-                    height={"100vh"}
+                    height={"80vh"}
                 dateClick = {this.dateClick}
                  events={this.props.events}
                 // events={[

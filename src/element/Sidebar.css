@@ -1,0 +1,14 @@
+.container {
+  background-color: #2B3648;
+}
+.sidebar {
+  background-color: #2B3648;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  transition: 0.4s ease;
+  color: #2B3648;
+  height: 100%;
+  z-index: 99;
+}
