@@ -1,24 +1,7 @@
-.fc-day a {
-    color: white;
-    font-style: normal;
-}
-.fc {
-    flex: 1;
-    /*max-width: 800px;*/
-    background-color: #2B3648;
-}
-
-
-
-
-
-/*.popup {*/
-/*    position: fixed;*/
-/*    top: 50%;*/
-/*    left: 50%;*/
-/*    transform: translate(-50%, -50%);*/
-/*    background-color:  #2B3648;*/
-/*    padding: 20px;*/
-/*    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);*/
-/*    z-index: 1000;*/
+/*.fc {*/
+/*    flex: 1;*/
+/*    !*max-width: 800px;*!*/
+/*    background-color: #2B3648;*/
 /*}*/
+
+

@@ -1,7 +1,5 @@
 .chat-container{
     margin-left : 270px;
-    width: 100%;
-    height: 100%;
     background-color: #2B3648;
 }
 
@@ -9,10 +7,8 @@
 .chat-history {
     background-color: #2B3648;
     overflow-y: auto;
-    height: 1000px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    padding: 50px;
+    height: calc(85vh - 50px);
 
 }
 
@@ -35,7 +31,7 @@
     align-items: center;
     position: sticky;
     bottom: 0;
-    background-color: #fff;
+    background-color: #2B3648;
     padding: 10px;
 }
 
@@ -61,8 +57,8 @@ button:hover {
 }
 
 .user-message {
-    background-color: #007bff;
-    color: #fff;
+    background-color: #212936;
+    color: #898989;
     border-radius: 5px;
     padding: 5px 10px;
     margin-bottom: 10px;
@@ -70,7 +66,8 @@ button:hover {
 }
 
 .ai-message {
-    background-color: #eee;
+    background-color: #1976D2;
+    color: #ffffff;
     border-radius: 5px;
     padding: 5px 10px;
     margin-bottom: 10px;

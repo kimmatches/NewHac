@@ -5,7 +5,7 @@ function SidebarItem({menu, isActive}) {
     return isActive === true ? (
 
         <div className="sidebar-item active">
-            <p>{menu.name}</p>
+            <p>✔️{menu.name}</p>
         </div>
 
     ) : (

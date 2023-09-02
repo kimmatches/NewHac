@@ -1,23 +1,22 @@
 .Container {
     display: flex;
-    justify-content: space-between; /* 사이드바와 컨텐츠 영역을 좌우로 배치합니다. */
-    align-items: flex-start; /* 컨텐츠 영역을 위로 정렬합니다. */
+    /*justify-content : center;*/
+    /*        !*space-between; !* 사이드바와 컨텐츠 영역을 좌우로 배치합니다. *!*!*/
+    /*align-items: flex-start; !* 컨텐츠 영역을 위로 정렬합니다. *!*/
     background-color: #56657F;
 }
 
 
 .App {
-    background-color: #56657F;
+    background-color: #2B3648;
 }
 
 .CalendarContainer {
-    background-color: #56657F; /* 캘린더 영역의 배경색 */
-    padding: 100px; /* 원하는 패딩값 */
-    /* 다른 스타일 속성을 추가하세요 */
+    background-color: #2B3648; /* 캘린더 영역의 배경색 */
+    padding: 61px; /* 원하는 패딩값 */
+    height: calc(90vh - 50px);
 }
 
 .ChatContainer {
-    background-color: #56657F; /* 채팅 영역의 배경색 */
-    /*padding: 100px; !* 원하는 패딩값 *!*/
-    /* 다른 스타일 속성을 추가하세요 */
+    background-color: #2B3648; /* 채팅 영역의 배경색 */
 }

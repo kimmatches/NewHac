@@ -27,6 +27,10 @@ class MyCalendar extends Component {
               <div style={{
                   margin: 50,
                   marginLeft:300,
+                  color:"white",
+                  fontSize:12,
+                  backgroundColor: "#212936",
+
                     }}>
             <FullCalendar
                  plugins={[dayGridPlugin,timeGridPlugin,interactionPlugin]}
@@ -38,8 +42,8 @@ class MyCalendar extends Component {
                             end: 'next'
                         }
                     }
-                    height={"70vh"}
-                dateClick = {this.dateClick}
+                 height={"70vh"}
+                 dateClick = {this.dateClick}
                  events={this.props.events}
                 // events={[
                 //     { title: 'event 1', date: '2023-09-01' },

@@ -1,12 +1,12 @@
 .container {
-  background-color: #2B3648;
+  background-color: #212936;
 }
 .sidebar {
-  background-color: #2B3648;
+  background-color: #212936;
   position: fixed;
   padding: 50px;
   /*top: 0;*/
-  color: #2B3648;
+  color: #212936;
   /*height: 100%;*/
   /*position: sticky;*/
   top: 0px;
