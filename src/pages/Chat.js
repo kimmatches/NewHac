@@ -1,80 +1,70 @@
-// import {Component, useState} from "react";
-import React, { Component } from "react";
-import "../App.css";
+import {useState} from "react";
+import React from "react";
+import "../Chat.css";
 
-class Chat extends Component {
-    render() {
-        return (
-            <>
-                <h1>Hi</h1>
-            </>
-        );
+function Chat() {
+    const [text, setText] = useState("");
+
+    const onChange = (e) => {
+        setText(e.target.value);
     }
+
+    const sendChat = () => {
+        addMessage(text, "user");
+        simulateBotResponse(text);
+        setText("");
+    }
+    // const handleOnKeyPress = (e) => {
+    //       if (e.key === "Enter") {
+    //         sendChat(); // Enter 입력이 되면 클릭 이벤트 실행
+    //       }
+// };
+    return (
+        <>
+
+            <div className="chat-container" id="">
+                <div className="chat">
+                    <div className="chat-messages" id="chat-messages">
+                        <div className="chat-message bot">
+                            안녕하세요! 무엇을 도와드릴까요?
+                        </div>
+                    </div>
+                    <input
+                        type="text"
+                        id="user-input"
+                        placeholder="메시지를 입력하세요..."
+                        onChange={onChange}
+                        value={text}
+                    />
+                    <button type="button" onClick={sendChat}>
+                        {" "}
+                        확인
+                    </button>
+                </div>
+            </div>
+        </>
+    );
 }
 
 export default Chat;
-// function addMessage(message, sender) {
-//   const chatMessagesElement = document.getElementById("chat-messages");
-//   const messageElement = document.createElement("div");
-//   messageElement.classList.add("chat-message", sender);
-//   messageElement.textContent = message;
-//   chatMessagesElement.appendChild(messageElement);
-//   chatMessagesElement.scrollTop = chatMessagesElement.scrollHeight; // Scroll to bottom
-// }
-//
-// function simulateBotResponse(userInput) {
-//   // 여기서 실제 GPT 모델과의 상호작용을 시뮬레이션할 수 있습니다.
-//   const botResponse = `당신이 말한 내용: "${userInput}" 에 대한 대답입니다.`;
-//   setTimeout(() => {
-//     addMessage(botResponse, "bot");
-//   }, 500); // 임의로 0.5초 후에 응답 추가
-// }
-//
-// export default function App() {
-//   const [text,setText] = useState("");
-//
-//   const onChange = (e) => {
-//     setText(e.target.value);
-//   }
-//   const onReset = () => {
-//     setText("");
-//   }
-//
-//   const sendChat = () => {
-//     addMessage(text, "user");
-//     simulateBotResponse(text);
-//     onReset();
-//   }
-//
-//   // const handleOnKeyPress = (e) => {
-//   //   if (e.key === "Enter") {
-//   //     sendChat(); // Enter 입력이 되면 클릭 이벤트 실행
-//   //   }
-//   // };
-//
-//   return (
-//     <>
-//
-//
-//       <div className="chat-container" id="">
-//         <div className="chat">
-//           <div className="chat-messages" id="chat-messages">
-//             <div className="chat-message bot">
-//               안녕하세요! 무엇을 도와드릴까요?
-//             </div>
-//           </div>
-//           <input
-//             type="text"
-//             id="user-input"
-//             placeholder="메시지를 입력하세요..."
-//             onChange={onChange}
-//           />
-//           <button type="button" onClick={sendChat}>
-//             {" "}
-//             확인
-//           </button>
-//         </div>
-//       </div>
-//     </>
-//   );
-// }
+
+function addMessage(message, sender) {
+    const chatMessagesElement = document.getElementById("chat-messages");
+    const messageElement = document.createElement("div");
+    messageElement.classList.add("chat-message", sender);
+    messageElement.textContent = message;
+    chatMessagesElement.appendChild(messageElement);
+    chatMessagesElement.scrollTop = chatMessagesElement.scrollHeight; // Scroll to bottom
+}
+
+function simulateBotResponse(userInput) {
+    // 여기서 실제 GPT 모델과의 상호작용을 시뮬레이션할 수 있습니다.
+    const botResponse = `당신이 말한 내용: "${userInput}" 에 대한 대답입니다.`;
+    setTimeout(() => {
+        addMessage(botResponse, "bot");
+    }, 500); // 임의로 0.5초 후에 응답 추가
+}
+
+
+
+
