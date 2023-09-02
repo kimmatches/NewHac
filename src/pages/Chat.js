@@ -21,27 +21,28 @@ function Chat() {
 // };
     return (
         <>
-
-            <div className="chat-container" id="">
-                <div className="chat">
-                    <div className="chat-messages" id="chat-messages">
-                        <div className="chat-message bot">
-                            안녕하세요! 무엇을 도와드릴까요?
+            <body>
+                <div className="chat-container" id="">
+                    <div className="chat">
+                        <div className="chat-messages" id="chat-messages">
+                            <div className="chat-message bot">
+                                안녕하세요! 무엇을 도와드릴까요?
+                            </div>
                         </div>
+                        <input
+                            type="text"
+                            id="user-input"
+                            placeholder="메시지를 입력하세요..."
+                            onChange={onChange}
+                            value={text}
+                        />
+                        <button type="button" onClick={sendChat}>
+                            {" "}
+                            확인
+                        </button>
                     </div>
-                    <input
-                        type="text"
-                        id="user-input"
-                        placeholder="메시지를 입력하세요..."
-                        onChange={onChange}
-                        value={text}
-                    />
-                    <button type="button" onClick={sendChat}>
-                        {" "}
-                        확인
-                    </button>
                 </div>
-            </div>
+            </body>
         </>
     );
 }
