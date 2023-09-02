@@ -1,6 +1,7 @@
 .chat-container{
-    margin-left : 270px;
+    margin-left : 200px;
     background-color: #2B3648;
+    padding: 2px;
 }
 
 
@@ -57,25 +58,42 @@ button:hover {
 }
 
 .user-message {
+    text-align: right; /* 오른쪽 정렬 */
     background-color: #212936;
     color: #898989;
-    border-radius: 5px;
-    padding: 5px 10px;
-    margin-bottom: 10px;
-    align-self: flex-end;
+    /*border-radius: 5px;*/
+    /*padding: 5px 10px;*/
+    /*margin-bottom: 10px;*/
+    /*align-self: flex-end;*/
+    border-radius: 10px; /* 둥근 모서리 설정 */
+    padding: 8px 12px; /* 내용과 경계 사이 간격 설정 */
+    margin-bottom: 10px; /* 말풍선 간격 설정 */
+
 }
 
 .ai-message {
+    text-align: left;
     background-color: #1976D2;
     color: #ffffff;
-    border-radius: 5px;
-    padding: 5px 10px;
-    margin-bottom: 10px;
-    align-self: flex-start;
+    /*border-radius: 5px;*/
+    /*padding: 5px 10px;*/
+    /*margin-bottom: 10px;*/
+    /*align-self: flex-start;*/
+     border-radius: 10px; /* 둥근 모서리 설정 */
+     padding: 8px 12px; /* 내용과 경계 사이 간격 설정 */
+     margin-bottom: 8px; /* 말풍선 간격 설정 */
+
 }
 
 
 .message-icon {
     font-size: 1.5em;
     margin-right: 5px;
+}
+
+.custom-bot-response {
+  background-color: #ffcc00; /* 배경색 변경 */
+  color: #000; /* 글자색 변경 */
+  font-weight: bold; /* 글꼴 굵게 설정 */
+  /* 다른 스타일 속성 추가 가능 */
 }

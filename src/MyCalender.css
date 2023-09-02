@@ -1,7 +1,42 @@
 /*.fc {*/
-/*    flex: 1;*/
-/*    !*max-width: 800px;*!*/
-/*    background-color: #2B3648;*/
+/*    display: flex;*/
+/*}*/
+/*.custom-calendar {*/
+/*  border: none !important; !* Border 없애기 *!*/
+/*  height: 500px !important; !* 크기 조정 *!*/
+/*  !* 다른 스타일 속성 추가 가능 *!*/
 /*}*/
 
 
+/* FullCalendar 월 달력의 각 날짜 (day) border를 제거 */
+.fc-dayGridMonth-view .fc-scrollgrid {
+  border: none !important;
+}
+
+/* FullCalendar 월 달력의 각 날짜 (day) border를 제거 */
+.fc-dayGridMonth-view .fc-day {
+  border: none !important;
+}
+
+.fc-header-toolbar {
+    background-color: #212936;
+    font-size: 7px;
+
+}
+
+.fc .fc-button-primary {
+  background-color: #212936; /* 원하는 배경색으로 설정 */
+    border: none;
+}
+
+/* FullCalendar 버튼 활성화 상태의 스타일 */
+.fc .fc-button-primary.fc-button-active {
+  background-color: #212936;
+    border: none;
+}
+
+/* FullCalendar 버튼 비활성화 상태의 스타일 */
+.fc .fc-button-primary.fc-button-disabled {
+    background-color: #212936;
+    border: none;
+}

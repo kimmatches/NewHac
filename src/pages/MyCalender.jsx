@@ -25,10 +25,10 @@ class MyCalendar extends Component {
         return (
           <div className="MyCalender">
               <div style={{
-                  margin: 50,
-                  marginLeft:300,
-                  color:"white",
-                  fontSize:12,
+                  margin: 20,
+                  marginLeft:200,
+                  color:"#AFBDD1",
+                  fontSize:11,
                   backgroundColor: "#212936",
 
                     }}>
@@ -37,18 +37,16 @@ class MyCalendar extends Component {
                     initialView={'dayGridMonth'}
                     headerToolbar={
                         {
-                            start: 'prev,today',
+                            start: 'prev',
                             center: 'title',
                             end: 'next'
                         }
                     }
-                 height={"70vh"}
+                 firstDay={1}
+                 height={"80vh"}
                  dateClick = {this.dateClick}
                  events={this.props.events}
-                // events={[
-                //     { title: 'event 1', date: '2023-09-01' },
-                //     { title: 'event 2', date: '2023-09-02' }
-                // ]}
+                 editable={true}
             />
               </div>
           </div>
