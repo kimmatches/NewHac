@@ -7,7 +7,7 @@ function App() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('URL');
+            const response = await fetch('');
             const data = await response.json();
             setChatHistory(data.history);
         };
@@ -66,7 +66,7 @@ function App() {
                     전송
                 </button>
             </div>
-        </div>
+         </div>
     );
 }
 
