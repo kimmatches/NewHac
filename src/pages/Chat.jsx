@@ -61,7 +61,12 @@ function App() {
                   backgroundColor: color || 'event.color', /* 원하는 색상 설정 또는 기본값 사용 */
                    marginLeft: '20px',
                   verticalAlign: 'middle', /* 수직 정렬 설정 */
+
+
                 };
+
+
+
                 const aiResponse = {
                     role: 'assistant',
                     content: (
@@ -80,6 +85,7 @@ function App() {
                                     <div>|</div>
                                     <div>{start}</div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
