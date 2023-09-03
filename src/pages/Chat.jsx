@@ -93,6 +93,16 @@ function App() {
                 setPrompt('');
                 setChatHistory((prevHistory) => [...prevHistory, aiResponse]);
             }
+            // events가 0일 때도 메시지를 출력하도록 처리
+            if (events.length === 0) {
+                const aiResponseWithoutEvents = {
+                    role: 'assistant',
+                    content: content,
+                    icon: '🤖',
+                };
+                setChatHistory((prevHistory) => [...prevHistory, aiResponseWithoutEvents]);
+            }
+
         } catch (error) {
             console.error('메시지 전송 중 오류 발생:', error);
         }
