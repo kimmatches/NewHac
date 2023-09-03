@@ -7,13 +7,13 @@ function App() {
   const [userInput, setUserInput] = useState('');
   const [prompt, setPrompt] = useState('');
 
-  useEffect(() => {
+ useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('YOUR_BACKEND_API_ENDPOINT');
+        const response = await axios.post('http://124.54.16.127:8080//api/v1/chat/completion');
         const data = response.data;
         setPrompt(data.prompt);
-        setChatHistory(data.history);
+        setChatHistory(data.history.map((message) => ({ role: 'user', content: message })));
       } catch (error) {
         console.error('API 호출 중 오류 발생:', error);
       }
@@ -36,14 +36,15 @@ function App() {
     setChatHistory([...chatHistory, newUserMessage]);
 
     try {
-      const response = await axios.post('YOUR_BACKEND_API_ENDPOINT', {
+      const response = await axios.post('http://124.54.16.127:8080//api/v1/chat/completion', {
         userInput: userInput,
       });
 
       const aiResponse = {
         role: 'assistant',
-        content: response.data.aiResponse,
+        content: response.data.prompt,
       };
+      setPrompt('');
       setChatHistory([...chatHistory, aiResponse]);
     } catch (error) {
       console.error('메시지 전송 중 오류 발생:', error);
