@@ -37,9 +37,9 @@ class MyCalendar extends Component {
                     initialView={'dayGridMonth'}
                     headerToolbar={
                         {
-                            start: 'prev',
+                            start: '.',
                             center: 'title',
-                            end: 'next'
+                            end: '.'
                         }
                     }
                  firstDay={1}
