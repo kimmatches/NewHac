@@ -48,10 +48,35 @@ function App() {
                 const start = event.start;
                 const end = event.end;
 
+                const squareBoxStyle = {
+                  display: 'inline-block',
+                    // padding:15,
+                  width: '20px', /* 네모 박스의 너비 설정 */
+                  height: '30px', /* 네모 박스의 높이 설정 */
+                  backgroundColor: color || 'event.color', /* 원하는 색상 설정 또는 기본값 사용 */
+                   marginLeft: '20px',
+                  verticalAlign: 'middle', /* 수직 정렬 설정 */
+                };
                 const aiResponse = {
                     role: 'assistant',
-                    content: content,
-                    events: [title, color, start, end],
+                    content: (
+                        <>
+                             <div>{content}</div> {/* content를 함께 출력 */}
+                              <div style={{ display: 'flex', alignItems: 'center' }}>
+                                <div style={squareBoxStyle}></div>
+                                   <div style={{ fontSize: '7px', backgroundColor: '#212936', padding: '8px 12px', width: '360px' }}>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                      <div>{title}</div>
+                                      <div>|</div>
+                                      <div>{start}</div>
+                                    </div>
+                                  </div>
+
+                              </div>
+                        </>
+                    ),
+                    // events: [title, color, start, end],
+                    // events: '${title} | ${start}',
                     icon: '🤖',
                 };
                 setPrompt('');
