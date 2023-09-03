@@ -1,11 +1,16 @@
 import React, {useState} from 'react';
 import '../Chat.css';
 import axios from 'axios';
+import {Link} from "react-router-dom";
 
 function App() {
     const [chatHistory, setChatHistory] = useState([]);
     const [userInput, setUserInput] = useState('');
     const [prompt, setPrompt] = useState('');
+
+    const handleBoxClick = () => {
+
+    };
 
     // useEffect(() => {
     //    const fetchData = async () => {
@@ -62,17 +67,23 @@ function App() {
                     content: (
                         <>
                              <div>{content}</div> {/* content를 함께 출력 */}
-                              <div style={{ display: 'flex', alignItems: 'center' }}>
-                                <div style={squareBoxStyle}></div>
-                                   <div style={{ fontSize: '7px', backgroundColor: '#212936', padding: '8px 12px', width: '360px' }}>
-                                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                      <div>{title}</div>
-                                      <div>|</div>
-                                      <div>{start}</div>
-                                    </div>
-                                  </div>
 
-                              </div>
+                            <Link to="/" style={{ textDecoration: "none" }} onClick={handleBoxClick}>
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                        {/* 네모박스, title, start 요소를 하나의 div로 래핑하고 클릭 이벤트 추가 */}
+
+                            <div style={squareBoxStyle}></div>
+                        <div onClick={handleBoxClick}>
+                            <div style={{ fontSize: '7px', backgroundColor: '#212936', padding: '8px 12px', width: '360px', color:'white' }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                    <div>{title}</div>
+                                    <div>|</div>
+                                    <div>{start}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </Link>
                         </>
                     ),
                     // events: [title, color, start, end],
