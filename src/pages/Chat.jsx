@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '../Chat.css';
 import axios from 'axios';
 
@@ -35,16 +35,22 @@ function App() {
     };
     setChatHistory([...chatHistory, newUserMessage]);
     try {
-      const response = await axios.post('http://124.54.16.127:8080//api/v1/chat/completion', {
+      const response = await axios.post('http://124.54.16.127:8080/api/v1/chat/completion', {
         prompt : userInput, history : []
       });
       const aiResponse = {
         role: 'assistant',
-        content: response.data.history,
+        content: response.data.content,
+        // events: [
+        //   {
+        //     title: response.data.title,
+        //     color: response.data.color,
+        //     start: response.data.start,
+        //     end: response.data.end,
+        //   },]
       };
-      console.log(response);
       setPrompt('');
-      setChatHistory([...chatHistory, aiResponse]);
+      setChatHistory((prevHistory) => [...prevHistory, aiResponse]);
     } catch (error) {
       console.error('메시지 전송 중 오류 발생:', error);
     }
