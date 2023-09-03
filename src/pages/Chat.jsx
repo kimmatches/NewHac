@@ -1,73 +1,91 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import '../Chat.css';
+import axios from 'axios';
 
 function App() {
-    const [chatHistory, setChatHistory] = useState([]);
-    const [userInput, setUserInput] = useState('');
+  const [chatHistory, setChatHistory] = useState([]);
+  const [userInput, setUserInput] = useState('');
+  const [prompt, setPrompt] = useState('');
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const response = await fetch('');
-            const data = await response.json();
-            setChatHistory(data.history);
-        };
-
-        fetchData();
-    }, []);
-
-    const handleInputChange = (e) => {
-        setUserInput(e.target.value);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('YOUR_BACKEND_API_ENDPOINT');
+        const data = response.data;
+        setPrompt(data.prompt);
+        setChatHistory(data.history);
+      } catch (error) {
+        console.error('API 호출 중 오류 발생:', error);
+      }
     };
 
-    const handleSendMessage = () => {
-        if (userInput.trim() === '') return;
+    fetchData();
+  }, []);
 
-        const newUserMessage = {role: 'user', content: userInput};
-        setChatHistory((prevHistory) => [...prevHistory, newUserMessage]);
+  const handleInputChange = (e) => {
+    setUserInput(e.target.value);
+  };
 
+  const handleSendMessage = async () => {
+    if (userInput.trim() === '') return;
 
-        setTimeout(() => {
-            const aiResponse = {role: 'assistant', content: 'ai응답'};
-
-            setChatHistory((prevHistory) => [...prevHistory, aiResponse]);
-        }, 1000);
-        setUserInput('');
+    const newUserMessage = {
+      role: 'user',
+      content: userInput,
     };
+    setChatHistory([...chatHistory, newUserMessage]);
 
-    const handleInputKeyPress = (e) => {
-        if (e.key === 'Enter') {
-            // 엔터 키를 눌렀을 때 메시지를 전송합니다.
-            handleSendMessage();
-        }
-    };
+    try {
+      const response = await axios.post('YOUR_BACKEND_API_ENDPOINT', {
+        userInput: userInput,
+      });
 
-    return (
-        <div className="chat-container">
-            <div className="chat-history" id="chat-history">
-                {chatHistory.map((message, index) => (
-                    <div
-                        key={index}
-                        className={`message ${message.role === 'user' ? 'user-message' : 'ai-message'}`}
-                    >
-                        {message.content}
-                    </div>
-                ))}
-            </div>
-            <div className="chat-input">
-                <input
-                    type="text"
-                    id="user-input"
-                    placeholder="메시지 입력..."
-                    value={userInput}
-                    onChange={handleInputChange}
-                    onKeyPress={handleInputKeyPress}
-                />
-                <button id="send-button" onClick={handleSendMessage}>
-                    전송
-                </button>
-            </div>
-         </div>
-    );
+      const aiResponse = {
+        role: 'assistant',
+        content: response.data.aiResponse,
+      };
+      setChatHistory([...chatHistory, aiResponse]);
+    } catch (error) {
+      console.error('메시지 전송 중 오류 발생:', error);
+    }
+
+    setUserInput('');
+  };
+
+  const handleInputKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleSendMessage();
+    }
+  };
+
+  return (
+    <div className="chat-container">
+      <div className="chat-history" id="chat-history">
+        <div className="prompt">{prompt}</div>
+        {chatHistory.map((message, index) => (
+          <div
+            key={index}
+            className={`message ${message.role === 'user' ? 'user-message' : 'ai-message'}`}
+          >
+            {message.content}
+          </div>
+        ))}
+      </div>
+      <div className="chat-input">
+        <input
+          type="text"
+          id="user-input"
+          placeholder="메시지 입력..."
+          value={userInput}
+          onChange={handleInputChange}
+          onKeyPress={handleInputKeyPress}
+        />
+        <button id="send-button" onClick={handleSendMessage}>
+          전송
+        </button>
+      </div>
+    </div>
+  );
 }
 
 export default App;
