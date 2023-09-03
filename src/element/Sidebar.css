@@ -22,12 +22,10 @@
   flex: 1;
   margin: 7px;
   border-radius: 10px;
-
 }
 
 /* 활성 메뉴 스타일 */
 .sidebar-item.active {
   background-color: #2B3648; /* 선택한 메뉴의 배경색으로 변경 */
   color: #1976D2; /* 선택한 메뉴의 글자색으로 변경 */
-
 }

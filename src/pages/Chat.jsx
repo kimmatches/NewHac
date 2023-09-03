@@ -18,6 +18,9 @@ function App() {
 
     setChatHistory([...chatHistory, { role: 'user', text: userInput, icon: '👤' }]);
 
+    const aiResponse = { role: 'ai', text: '이것입니다', icon: '🤖' };
+    setChatHistory([...chatHistory, aiResponse]);
+
     //백엔드 API
 
     setUserInput('');
