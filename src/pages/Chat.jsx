@@ -7,20 +7,20 @@ function App() {
   const [userInput, setUserInput] = useState('');
   const [prompt, setPrompt] = useState('');
 
- useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.post('http://124.54.16.127:8080//api/v1/chat/completion');
-        const data = response.data;
-        setPrompt(data.prompt);
-        setChatHistory(data.history.map((message) => ({ role: 'user', content: message })));
-      } catch (error) {
-        console.error('API 호출 중 오류 발생:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
+ // useEffect(() => {
+ //    const fetchData = async () => {
+ //      try {
+ //        const response = await axios.post('http://124.54.16.127:8080//api/v1/chat/completion');
+ //        const data = response.data;
+ //        setPrompt(data.prompt);
+ //        setChatHistory(data.history.map((message) => ({ role: 'user', content: message })));
+ //      } catch (error) {
+ //        console.error('API 호출 중 오류 발생:', error);
+ //      }
+ //    };
+ //
+ //    fetchData();
+ //  }, []);
 
   const handleInputChange = (e) => {
     setUserInput(e.target.value);
@@ -34,16 +34,15 @@ function App() {
       content: userInput,
     };
     setChatHistory([...chatHistory, newUserMessage]);
-
     try {
       const response = await axios.post('http://124.54.16.127:8080//api/v1/chat/completion', {
-        userInput: userInput,
+        prompt : userInput, history : []
       });
-
       const aiResponse = {
         role: 'assistant',
-        content: response.data.prompt,
+        content: response.data.history,
       };
+      console.log(response);
       setPrompt('');
       setChatHistory([...chatHistory, aiResponse]);
     } catch (error) {
