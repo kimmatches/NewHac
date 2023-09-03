@@ -50,7 +50,8 @@ function App() {
 
                 const aiResponse = {
                     role: 'assistant',
-                    content: [content,title,color,start,end],
+                    content: content,
+                    events: [title, color, start, end],
                     icon: '🤖',
                 };
                 setPrompt('');
@@ -79,7 +80,10 @@ function App() {
                         className={`message ${message.role === 'user' ? 'user-message' : 'ai-message'}`}
                     >
                         {message.role === 'assistant' && <span className="icon">{message.icon}</span>}
-                        {message.content}
+                        <div>{message.content}
+                            <div className="event">{message.events}</div>
+                        </div>
+
                         {message.role === 'user' && <span className="icon">{message.icon}</span>}
                     </div>
                 ))}

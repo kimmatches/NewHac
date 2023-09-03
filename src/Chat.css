@@ -97,3 +97,7 @@ button:hover {
   font-weight: bold; /* 글꼴 굵게 설정 */
   /* 다른 스타일 속성 추가 가능 */
 }
+
+.event{
+    background-color:black;
+}
