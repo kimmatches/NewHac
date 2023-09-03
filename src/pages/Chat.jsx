@@ -54,42 +54,68 @@ function App() {
                 const end = event.end;
 
                 const squareBoxStyle = {
-                  display: 'inline-block',
+                    display: 'inline-block',
                     // padding:15,
-                  width: '20px', /* 네모 박스의 너비 설정 */
-                  height: '30px', /* 네모 박스의 높이 설정 */
-                  backgroundColor: color || 'event.color', /* 원하는 색상 설정 또는 기본값 사용 */
-                   marginLeft: '20px',
-                  verticalAlign: 'middle', /* 수직 정렬 설정 */
+                    width: '20px', /* 네모 박스의 너비 설정 */
+                    height: '30px', /* 네모 박스의 높이 설정 */
+                    backgroundColor: color || 'event.color', /* 원하는 색상 설정 또는 기본값 사용 */
+                    marginLeft: '20px',
+                    verticalAlign: 'middle', /* 수직 정렬 설정 */
 
 
                 };
-
 
 
                 const aiResponse = {
                     role: 'assistant',
                     content: (
                         <>
-                             <div>{content}</div> {/* content를 함께 출력 */}
+                            {/*<div>{content}</div>*/}
+                            {/* content를 함께 출력 */}
 
-                            <Link to="/" style={{ textDecoration: "none" }} onClick={handleBoxClick}>
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                        {/* 네모박스, title, start 요소를 하나의 div로 래핑하고 클릭 이벤트 추가 */}
+                            {/*            <Link to="/" style={{ textDecoration: "none" }} onClick={handleBoxClick}>*/}
+                            {/*    <div style={{ display: 'flex', alignItems: 'center' }}>*/}
+                            {/*        /!* 네모박스, title, start 요소를 하나의 div로 래핑하고 클릭 이벤트 추가 *!/*/}
 
-                            <div style={squareBoxStyle}></div>
-                        <div onClick={handleBoxClick}>
-                            <div style={{ fontSize: '7px', backgroundColor: '#212936', padding: '8px 12px', width: '360px', color:'white' }}>
-                                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                    <div>{title}</div>
-                                    <div>|</div>
-                                    <div>{start}</div>
+                            {/*            <div style={squareBoxStyle}></div>*/}
+                            {/*        <div onClick={handleBoxClick}>*/}
+                            {/*            <div style={{ fontSize: '7px', backgroundColor: '#212936', padding: '8px 12px', width: '360px', color:'white' }}>*/}
+                            {/*                <div style={{ display: 'flex', justifyContent: 'space-between' }}>*/}
+                            {/*                    <div>{title}</div>*/}
+                            {/*                    <div>|</div>*/}
+                            {/*                    <div>{start}</div>*/}
+                            {/*                </div>*/}
+
+                            {/*            </div>*/}
+                            {/*        </div>*/}
+                            {/*    </div>*/}
+                            {/*</Link>*/}
+                            {content && <div>{content}</div>}
+                            <Link to="/" style={{textDecoration: "none"}} onClick={handleBoxClick}>
+                                <div>
+                                     {/* content를 출력 (content가 존재할 때만) */}
+                                    {events.map((event, index) => (
+                                        <div key={index}
+                                             style={{marginBottom: '10px', display: 'flex', alignItems: 'center'}}>
+                                            <div style={squareBoxStyle}></div>
+                                            <div onClick={handleBoxClick}>
+                                                <div style={{
+                                                    fontSize: '7px',
+                                                    backgroundColor: '#212936',
+                                                    width: '500px',
+                                                    color: 'white'
+                                                }}>
+                                                    <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                                                        <p>
+                                                            {event.title} | {event.start}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
                                 </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </Link>
+                            </Link>
                         </>
                     ),
                     // events: [title, color, start, end],
