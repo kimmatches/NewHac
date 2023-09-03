@@ -1,60 +1,73 @@
-import React, { useState } from 'react';
+import React, {useState, useEffect} from 'react';
 import '../Chat.css';
 
 function App() {
-  const [chatHistory, setChatHistory] = useState([
-    { role: 'user', text: '안녕하세요!', icon: '👤' },
-    { role: 'ai', text: '안녕하세요!', icon: '🤖' },
-  ]);
+    const [chatHistory, setChatHistory] = useState([]);
+    const [userInput, setUserInput] = useState('');
 
-  const [userInput, setUserInput] = useState('');
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await fetch('URL');
+            const data = await response.json();
+            setChatHistory(data.history);
+        };
 
-  const handleInputChange = (e) => {
-    setUserInput(e.target.value);
-  };
+        fetchData();
+    }, []);
 
-  const handleSendMessage = () => {
-    if (userInput.trim() === '') return;
+    const handleInputChange = (e) => {
+        setUserInput(e.target.value);
+    };
 
-    setChatHistory([...chatHistory, { role: 'user', text: userInput, icon: '👤' }]);
+    const handleSendMessage = () => {
+        if (userInput.trim() === '') return;
 
-    const aiResponse = { role: 'ai', text: '이것입니다', icon: '🤖' };
-    setChatHistory([...chatHistory, aiResponse]);
+        const newUserMessage = {role: 'user', content: userInput};
+        setChatHistory((prevHistory) => [...prevHistory, newUserMessage]);
 
-    //백엔드 API
 
-    setUserInput('');
-  };
+        setTimeout(() => {
+            const aiResponse = {role: 'assistant', content: 'ai응답'};
 
-  return (
-    <div className="chat-container">
-      <div className="chat-history" id="chat-history">
-        {chatHistory.map((message, index) => (
-          <div
-            key={index}
-            className={`message ${message.role === 'user' ? 'user-message' : 'ai-message'}`}
-          >
-            <span className="message-icon">{message.icon}</span>
-            <div className="message-bubble">
-            {message.text}
-          </div>
+            setChatHistory((prevHistory) => [...prevHistory, aiResponse]);
+        }, 1000);
+        setUserInput('');
+    };
+
+    const handleInputKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            // 엔터 키를 눌렀을 때 메시지를 전송합니다.
+            handleSendMessage();
+        }
+    };
+
+    return (
+        <div className="chat-container">
+            <div className="chat-history" id="chat-history">
+                {chatHistory.map((message, index) => (
+                    <div
+                        key={index}
+                        className={`message ${message.role === 'user' ? 'user-message' : 'ai-message'}`}
+                    >
+                        {message.content}
+                    </div>
+                ))}
+            </div>
+            <div className="chat-input">
+                <input
+                    type="text"
+                    id="user-input"
+                    placeholder="메시지 입력..."
+                    value={userInput}
+                    onChange={handleInputChange}
+                    onKeyPress={handleInputKeyPress}
+                />
+                <button id="send-button" onClick={handleSendMessage}>
+                    전송
+                </button>
+            </div>
         </div>
-        ))}
-      </div>
-      <div className="chat-input">
-        <input
-          type="text"
-          id="user-input"
-          placeholder="메시지 입력..."
-          value={userInput}
-          onChange={handleInputChange}
-        />
-        <button id="send-button" onClick={handleSendMessage}>
-          전송
-        </button>
-      </div>
-    </div>
-  );
+    );
 }
 
 export default App;
